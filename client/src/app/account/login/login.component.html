@@ -1,0 +1,13 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="text-center my-4">
+            <h3 class="my-3">Login</h3>
+        </div>
+        <app-text-input formControlName="email" [label]="'Email address'"></app-text-input>
+        <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
+        <div class="text-center my-4">
+            <button type="submit" class="btn btn-primary mx-2" [disabled]="loginForm.invalid">Login</button>
+            <button type="button" class="btn btn-default mx-2" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

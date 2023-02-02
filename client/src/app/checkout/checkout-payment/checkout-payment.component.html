@@ -1,0 +1,26 @@
+<div class="mt-4" [formGroup]="checkoutForm">
+    <div class="row">
+        <div class="col-12" formGroupName="paymentForm">
+            <app-text-input [label]="'Name on card'" formControlName="nameOnCard"></app-text-input>
+        </div>
+        <div class="col-6 mb-3">
+            <div class="form-control py-3" #cardNumber></div>
+            <ng-container *ngIf="cardErrors">
+                <span class="text-danger">{{ cardErrors }}</span>
+            </ng-container>
+        </div>
+        <div class="col-3 mb-3">
+            <div class="form-control py-3" #cardExpiry></div>
+        </div>
+        <div class="col-3 mb-3">
+            <div class="form-control py-3" #cardCvc></div>
+        </div>
+    </div>
+</div>
+<div class="d-flex flex-row justify-content-between mb-2">
+    <button class="btn btn-outline-primary mb-2" cdkStepperPrevious><i class="fa fa-angle-left"></i> Back to Review</button>
+    <button class="btn btn-primary mb-2" (click)="submitOrder()"
+        [disabled]="loading || checkoutForm.get('paymentForm').invalid || !cardNumberValid || !cardExpiryValid || !cardCvcValid">
+        Submit order <i class="fa fa-angle-right"></i><i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+    </button>
+</div>

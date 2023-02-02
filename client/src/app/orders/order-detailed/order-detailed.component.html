@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row" *ngIf="order">
+    <div class="col-12 py-3">
+      <app-basket-summary [items]="order.orderItems" [isBasket]="false" [isOrder]="true"></app-basket-summary>
+    </div>
+    <div class="row summary">
+      <app-order-totals [shippingPrice]="order.shippingPrice" [subtotal]="order.subtotal" [total]="order.total"></app-order-totals>
+    </div>
+  </div>
+</div>
